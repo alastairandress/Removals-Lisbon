@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #0f172a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+@layer components {
+  .container-x {
+    @apply max-w-7xl mx-auto px-6 lg:px-8;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-brand-600 text-white font-medium rounded-lg hover:bg-brand-700 transition-colors shadow-sm;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white text-brand-700 font-medium rounded-lg border border-brand-200 hover:border-brand-400 hover:bg-brand-50 transition-colors;
+  }
+
+  .section-label {
+    @apply inline-block text-xs font-semibold tracking-[0.2em] uppercase text-brand-600;
+  }
+}
+
+/* Subtle dot pattern background */
+.dot-pattern {
+  background-image: radial-gradient(rgba(3, 104, 230, 0.12) 1px, transparent 1px);
+  background-size: 24px 24px;
+}

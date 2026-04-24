@@ -1,5 +1,5 @@
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages, getTranslations } from 'next-intl/server';
+import { getMessages, getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Inter, Fraunces } from 'next/font/google';
 import { locales } from '../../i18n';
@@ -55,6 +55,10 @@ export async function generateMetadata({ params: { locale } }) {
 
 export default async function LocaleLayout({ children, params: { locale } }) {
   if (!locales.includes(locale)) notFound();
+
+  // Enable static rendering for this locale
+  unstable_setRequestLocale(locale);
+
   const messages = await getMessages();
 
   const jsonLd = {
